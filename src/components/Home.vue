@@ -16,8 +16,3 @@ export default {
     }
 };
 </script>
-
-<style scoped>
-    @import '../dist/main.css';
-</style>
-

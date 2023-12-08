@@ -27,6 +27,10 @@ body{
   margin: 0;
   padding: 0;
 }
+button {
+  font-family: "Archivo";
+}
 
 @import './dist/main.css';
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&display=swap');
 </style>
