@@ -1,16 +1,23 @@
-<template >
-    <NavBar></NavBar>
+<template>
+    <router-view/>
+    <NavBar />
+    <HeadinG/>
 </template>
 
 <script>
-import NavBar from './Navbar.vue';
+import NavBar from './Navbar.vue'
+import HeadinG from './Heading.vue'
 
 export default {
-    name:"HomePage",
+    name: "HomePage",
     components: {
-        NavBar, 
-    },
-    props: {
+        NavBar,
+        HeadinG
     }
-};
+}
 </script>
+
+
+<style>
+
+</style>
