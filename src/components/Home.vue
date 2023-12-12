@@ -1,22 +1,19 @@
 <template>
-    <router-view/>
-    <NavBar />
-    <HeadinG/>
+    <div class="my-3">
+        <HeadinG/>
+    </div>
 </template>
 
 <script>
-import NavBar from './Navbar.vue'
 import HeadinG from './Heading.vue'
 
 export default {
     name: "HomePage",
     components: {
-        NavBar,
         HeadinG
     }
 }
 </script>
-
 
 <style>
 

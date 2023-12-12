@@ -1,14 +1,15 @@
 <template>
-    <Navbar></Navbar>
-    <p>cock</p>
+<div>
+    lmao
+</div>
 </template>
     
 <script>
-import Navbar from './Navbar.vue';
 
 export default {
     name: "OtherDot",
     props:{},
-    components: { Navbar }
+    components: { 
+    }
     }
 </script>

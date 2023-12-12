@@ -1,16 +1,17 @@
 <template>
   <div id="app" class="">
- 
+    <NavBar/>
+    <RouterView/>
   </div>
 </template>
 
 <script>
-
+import NavBar from './components/Navbar.vue'
 
 export default {
   name: 'App',
   components: {
-
+    NavBar
   }
 }
 </script>

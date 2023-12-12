@@ -1,15 +1,17 @@
 <template>
-<Navbar></Navbar>
+<div>
+    ass
+</div>
 </template>
 
 
 <script>
 
-import Navbar from './Navbar.vue';
-
 export default {
     name: "ProjectsPage",
     props:{},
-    components: { Navbar }
+    components: {
+    
+    }
     }
 </script>
