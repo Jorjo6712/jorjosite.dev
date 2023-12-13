@@ -17,7 +17,7 @@ LINK: https://jorjosite.dev
 
 ## Screenshots
 
-![App Screenshot](Nothing for now)
+Nothing for now
 
 
 ## 🚀 About Me
