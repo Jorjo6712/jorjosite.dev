@@ -1,7 +1,7 @@
 <template>
-    <div name="navbar" class="flex justify-center items-center font-mono bg- py-2 sticky"> 
+    <div name="navbar" class="flex justify-center items-center font-mono py-2 sticky"> 
         <div @click="toggleNav" class="flex md:hidden">
-          <button type="button"  class="text-gray-100 hover:text-gray-400 focus:outline-none focus:text-gray-400"></button>
+          <button type="button" class="text-gray-100 hover:text-gray-400 focus:outline-none focus:text-gray-400"></button>
           <v-icon name="fa-hamburger" scale="2" animation="float" inverse hover />
         </div>
     </div>
