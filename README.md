@@ -8,16 +8,16 @@ LINK: https://jorjosite.dev
 
 ## Tech Stack
 
-**Client:** Vue.js, GSAP, TailwindCSS
+**Client:** Vue.js, TailwindCSS
 
-**Server:** Node, Flask [API]
+**Server:** Node, Flask [API] with Flask-PyMongo
 
 **Database:** MongoDB 
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](Nothing for now)
 
 
 ## 🚀 About Me
