@@ -1,18 +1,13 @@
 <template>
-    <div class='w-full max-w-lg px-1 py-1 mx-auto bg-white backdrop-blur rounded-lg shadow-xl'>
-        <div class='max-w-md mx-auto space-y-6'>
-            <h2 class="flex flex-row flex-nowrap items-center my-0.5">
-                <span class="flex-grow block border-t border-black" aria-hidden="true" role="presentation"></span>
-                    <span class="flex-none block mx-4 px-4 py-2 text-xs leading-none font-medium uppercase bg-black text-white rounded">
-                    <center> Hello my is name Jordan! </center> <br>
-                    <center> I am a developer based in Denmark</center>
-                    <br>
-                    <center><v-icon name="fa-code" scale="2" animation="pulse" /></center>
-                    </span>
-                <span class="flex-grow block border-t border-black" aria-hidden="true" role="presentation"></span>
-            </h2>
+<div class="max-w-lg max-h-lg flex mx-auto mt-20 justify-center items-center">
+    <div class="rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <div class="py-4 px-6">
+            <p class="text-xl text-neutral-600 dark:text-neutral-200">
+                Hello my name is Jordan and I am a developer <v-icon name="fa-code" scale="1.2" animation="pulse" /> <br> based in Denmark 
+            </p>
         </div>
     </div>
+</div> 
 </template>
 
 <script>
