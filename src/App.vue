@@ -1,7 +1,11 @@
 <template>
   <div id="app" class="archivo">
     <NavBar/>
-    <RouterView/>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="in-out">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -32,6 +36,17 @@ body{
 button {
   font-family: "Archivo";
 }
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.3s ease-out;
+}
+
 
 @import './dist/main.css';
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&display=swap');
