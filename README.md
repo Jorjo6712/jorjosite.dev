@@ -8,7 +8,7 @@ LINK: https://jorjosite.dev
 
 ## Tech Stack
 
-**Client:** Vue.js, TailwindCSS
+**Client:** Vue.js, TailwindCSS, Three.js
 
 **Server:** Node, Flask [API] with Flask-PyMongo
 
