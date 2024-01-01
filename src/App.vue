@@ -7,10 +7,14 @@
         </transition>
       </router-view>
   </div>
+  <canvas id="canvas">
+  </canvas>
 </template>
 
 <script>
 import NavBar from './components/Navbar.vue'
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 export default {
   name: 'App',
@@ -18,7 +22,36 @@ export default {
     NavBar
   },
 }
-  
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 4/3, 0.1);
+const light = new THREE.PointLight( 0xf3faf2, 1, 5);
+const loader = new GLTFLoader().setPath('./');
+
+loader.load('scene.gltf', ( gltf ) => {
+
+  scene.add( gltf.scene );
+
+}, undefined, function ( error ) {
+
+console.error( error );
+
+} );
+
+scene.add(light);
+
+camera.position.z = 5;
+light.position.set( 50, 50, 50 );
+
+const renderer = new THREE.WebGLRenderer();
+
+
+renderer.setClearColor( 0x1ef20f, 0);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+document.body.appendChild(renderer.domElement);
+
 </script>
 
 <style>
@@ -29,10 +62,19 @@ export default {
 }
 
 body{
-  background: rgb(32, 32, 35);
   margin: 0;
   padding: 0;
 }
+
+canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}
+
 button {
   font-family: "Archivo";
 }

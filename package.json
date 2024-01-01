@@ -8,8 +8,6 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@tresjs/cientos": "^3.7.0",
-    "@tresjs/core": "^3.6.0",
     "core-js": "^3.8.3",
     "oh-vue-icons": "^1.0.0-rc3",
     "three": "^0.134.0",
