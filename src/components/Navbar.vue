@@ -2,7 +2,7 @@
     <div name="navbar" class="flex justify-center items-center font-mono py-2 sticky"> 
         <div @click="toggleNav" class="flex md:hidden">
           <button type="button" class="text-gray-100 hover:text-gray-400 focus:outline-none focus:text-gray-400"></button>
-          <v-icon name="fa-hamburger" scale="2" animation="float" inverse />
+          <v-icon name="gi-hamburger-menu" scale="2" inverse />
         </div>
     </div>
     <ul :class="showMenu ? 'flex' : 'hidden'" class="flex-col justify-center items-center mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-3 md:mt-0">

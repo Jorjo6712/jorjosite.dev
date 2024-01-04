@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="archivo">
+  <div id="app" ref="container">
     <NavBar/>
       <router-view v-slot="{ Component }">
         <transition enter-from-class="opacity-0" enter-active-class="puff-in-center" leave-active-class="fade-out" leave-to-class="opacity-1" mode="out-in">
@@ -7,13 +7,11 @@
         </transition>
       </router-view>
   </div>
-  <canvas id="canvas">
-  </canvas>
 </template>
 
 <script>
 import NavBar from './components/Navbar.vue'
-import * as THREE from 'three';
+import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 export default {
@@ -21,36 +19,54 @@ export default {
   components: {
     NavBar
   },
-}
+  mounted() {
+    const container = this.$refs.container;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({antialias: true});
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, 4/3, 0.1);
-const light = new THREE.PointLight( 0xf3faf2, 1, 5);
-const loader = new GLTFLoader().setPath('./');
+    renderer.setSize(window.innerWidth * 1.1, window.innerHeight * 1.1);
+    renderer.setClearColor(0x546d98);
 
-loader.load('scene.gltf', ( gltf ) => {
+    container.appendChild(renderer.domElement);
 
-  scene.add( gltf.scene );
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
 
-}, undefined, function ( error ) {
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
+    scene.add(hemisphereLight);
 
-console.error( error );
+    const loader = new GLTFLoader();
 
-} );
+    loader.load( 'scene.gltf', function ( gltf ) {
 
-scene.add(light);
+      scene.add( gltf.scene );
 
-camera.position.z = 5;
-light.position.set( 50, 50, 50 );
+    }, undefined, function ( error ) {
 
-const renderer = new THREE.WebGLRenderer();
+      console.error( error );
 
+    } );
+   
+    camera.position.z = 0.05;
+    camera.position.y = 0.05;
+    camera.position.x = 0.05;
+    
+    const animate = function () {
+      requestAnimationFrame(animate);
+     
+      scene.traverse((object) => {
+        if (object.isMesh) {
+        object.rotation.z += 0.001;
+        object.rotation.x += 0.001;
+        }
+      });
 
-renderer.setClearColor( 0x1ef20f, 0);
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-
-document.body.appendChild(renderer.domElement);
+      renderer.render(scene, camera);
+    };
+    animate();
+  },
+};
 
 </script>
 
@@ -61,17 +77,18 @@ document.body.appendChild(renderer.domElement);
   -moz-osx-font-smoothing: grayscale;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 canvas {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0%;
+  left: 0%;
   z-index: -9999;
 }
 

@@ -5,7 +5,7 @@ import { BiHouseFill } from "oh-vue-icons/icons"
 import { MdMorehoriz } from 'oh-vue-icons/icons'
 import { FaCode } from "oh-vue-icons/icons"
 import { OhVueIcon, addIcons } from "oh-vue-icons"
-import { FaHamburger } from 'oh-vue-icons/icons'
+import { GiHamburgerMenu } from "oh-vue-icons/icons";
 
 import App from './App.vue'
 import HomePage from './components/Home.vue'
@@ -22,7 +22,7 @@ const router = createRouter({
 });
 
 
-addIcons(BiGithub, BiHouseFill, MdMorehoriz, FaCode, FaHamburger);
+addIcons(BiGithub, BiHouseFill, MdMorehoriz, FaCode, GiHamburgerMenu);
 
 const app = createApp(App);
 
