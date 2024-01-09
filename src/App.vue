@@ -56,11 +56,12 @@ export default {
     
     const animate = function () {
 
-      camera.fov += 0.009;
+      camera.fov += 0.005;
+      camera.rotateZ(0.0000009);
 
       if (camera.fov >= 50)
       {
-        camera.fov =- 0.009;
+        camera.fov =- 0.005;
       }
 
       camera.updateProjectionMatrix();
@@ -111,8 +112,8 @@ canvas {
   top: 0%;
   left: 0%;
   z-index: -9999;
-  filter: blur(6px);
-  margin: -10px;
+  filter: blur(10px);
+  margin: -15px;
 }
 
 button {
