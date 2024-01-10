@@ -10,7 +10,7 @@ LINK: https://jorjosite.dev
 
 **Client:** Vue.js, TailwindCSS, Three.js
 
-**Server:** Node, Flask [API] with Flask-PyMongo
+**Backend:** Node, Flask [API] with Flask-PyMongo
 
 **Database:** MongoDB 
 
