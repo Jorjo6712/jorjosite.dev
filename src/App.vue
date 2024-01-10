@@ -57,7 +57,6 @@ export default {
     const animate = function () {
 
       camera.fov += 0.005;
-      camera.rotateZ(0.0000009);
 
       if (camera.fov >= 50)
       {
