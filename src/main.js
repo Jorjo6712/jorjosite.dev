@@ -1,21 +1,24 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
+/* Icon Imports */
 import { BiGithub } from "oh-vue-icons/icons"
 import { BiHouseFill } from "oh-vue-icons/icons"
 import { MdMorehoriz } from 'oh-vue-icons/icons'
 import { FaCode } from "oh-vue-icons/icons"
 import { OhVueIcon, addIcons } from "oh-vue-icons"
-import { GiHamburgerMenu } from "oh-vue-icons/icons";
-import { ViFileTypeVue } from "oh-vue-icons/icons";
-import { CoDotNet } from "oh-vue-icons/icons";
-import { ViFileTypeCsharp2 } from "oh-vue-icons/icons";
-import { SiTailwindcss } from "oh-vue-icons/icons";
-import { SiThreedotjs } from "oh-vue-icons/icons";
-import { ViFileTypePython } from "oh-vue-icons/icons";
-import { ViFileTypeHtml } from "oh-vue-icons/icons";
-import { ViFileTypeCss } from "oh-vue-icons/icons";
-import { CoJavascript } from "oh-vue-icons/icons";
-import { BiEmojiSmileUpsideDownFill } from "oh-vue-icons/icons";
+import { GiHamburgerMenu } from "oh-vue-icons/icons"
+import { ViFileTypeVue } from "oh-vue-icons/icons"
+import { CoDotNet } from "oh-vue-icons/icons"
+import { ViFileTypeCsharp2 } from "oh-vue-icons/icons"
+import { SiTailwindcss } from "oh-vue-icons/icons"
+import { SiThreedotjs } from "oh-vue-icons/icons"
+import { ViFileTypePython } from "oh-vue-icons/icons"
+import { ViFileTypeHtml } from "oh-vue-icons/icons"
+import { ViFileTypeCss } from "oh-vue-icons/icons"
+import { CoJavascript } from "oh-vue-icons/icons"
+import { BiEmojiSmileUpsideDownFill } from "oh-vue-icons/icons"
+
 
 import App from './App.vue'
 import HomePage from './components/Home.vue'

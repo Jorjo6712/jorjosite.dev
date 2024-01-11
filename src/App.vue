@@ -22,7 +22,7 @@ export default {
   mounted() {
     const container = this.$refs.container;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({antialias: true});
 
     renderer.setSize(window.innerWidth * 1.1, window.innerHeight * 1.1);
@@ -99,7 +99,7 @@ body {
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #282828;
+    background-color: #111827;
     border-radius: 15px;
     border: 5px none #ffffff;
   }
