@@ -11,7 +11,7 @@ LINK: https://jorjosite.dev
 
 **Backend:** Node, Flask [API]
 
-**Database:** Firebase 
+**Database:** MongoDB
 
 
 ## Screenshots
