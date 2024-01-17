@@ -22,10 +22,10 @@ export default {
   mounted() {
     const container = this.$refs.container;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({antialias: true});
 
-    renderer.setSize(window.innerWidth * 1.1, window.innerHeight * 1.1);
+    renderer.setSize(window.innerWidth * 2.5, window.innerHeight * 2.5);
 
     container.appendChild(renderer.domElement);
 
@@ -51,16 +51,16 @@ export default {
     scene.backgroundBlurriness = 1;
 
     camera.position.z = 3;
-    camera.position.y = 2 ;
-    camera.position.x = 1.5;
+    camera.position.y = 1 ;
+    camera.position.x = 1;
     
     const animate = function () {
 
       camera.fov += 0.005;
 
-      if (camera.fov >= 50)
+      if (camera.fov >= 70)
       {
-        camera.fov =- 0.005;
+        camera.fov =- 0.5;
       }
 
       camera.updateProjectionMatrix();

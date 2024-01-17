@@ -3,7 +3,7 @@
     <div class="max-w-lg max-h-lg flex mt-20 justify-center items-center">
         <div class="rounded-lg bg-white shadow dark:bg-gray-900 acrylic">
             <div class="py-4 px-6">
-                <p id="welcomeMsg" class="text-base text-center font-bold text-neutral-950 dark:text-neutral-200 opacity-100"/>
+                <p ref="welcomeMsg" class="text-base text-center font-bold text-neutral-950 dark:text-neutral-200 opacity-100"/>
             </div>
         </div>
     </div>
@@ -26,14 +26,14 @@
         <div class="items-center text-white text-2xl bolder"># Languages</div>
         <hr class="border-purple-400 border-y-2 mt-2 mb-2 rounded-xl"/>
         <div class="lg:flex lg:flex-row lg:flex-shrink min-[320px]:grid min-[320px]:grid-flow-col min-[320px]:grid-cols-2 min-[320px]:grid-rows-3 min-[320px]:w-full">
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-blue-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="vi-file-type-python" scale="4" animation="pulse" hover/></div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-green-700 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="vi-file-type-csharp2" scale="4" animation="pulse" hover/>
+            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-blue-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='python'" name="vi-file-type-python" scale="4" animation="pulse" hover/></div>
+            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-green-700 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='csharp'" name="vi-file-type-csharp2" scale="4" animation="pulse" hover/>
             </div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-orange-500 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="vi-file-type-html" scale="4" animation="pulse" hover/>
+            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-orange-500 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='html'" name="vi-file-type-html" scale="4" animation="pulse" hover/>
             </div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-blue-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="vi-file-type-css" scale="4" animation="pulse" hover/>
+            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-blue-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='css'" name="vi-file-type-css" scale="4" animation="pulse" hover/>
             </div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-yellow-300 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="co-javascript" scale="4" animation="pulse" fill="yellow" hover/>
+            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-yellow-300 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='javascript'" name="co-javascript" scale="4" animation="pulse" fill="yellow" hover/>
             </div>
         </div>
         <div class="items-center text-white text-2xl bolder"># Frameworks & Tools</div>
@@ -46,34 +46,48 @@
             </div>
         </div>
     </div>
+    <langInfoModal :class="showModal ? 'flex' : 'hidden'" :toggleModal="toggleModal" :langName="langName"/>
 </div>
 </template>
 
 <script>
-import TypeIt from "typeit";
+import TypeIt from "typeit" 
+import { ref, onMounted } from 'vue'
+
+import langInfoModal from "./langInfoModal.vue"
 
 export default {
     name: "HomePage",
     components: {
+        langInfoModal
     },
-    mounted() {
-        this.$nextTick(() => {
-            const welcomeMsg = document.querySelector("#welcomeMsg");
+    data() {
+        return {
+            langName: '',
+        }
+    },
+    setup() {
+        let showModal = ref(true)
+        const toggleModal = () => (showModal.value = !showModal.value)
 
-            if (welcomeMsg) {
+        const welcomeMsg = ref(null);
 
-                welcomeMsg.innerHTML = '';
+        onMounted(() => {
+        if (welcomeMsg.value) {
+            welcomeMsg.value.innerHTML = '';
 
-                new TypeIt(welcomeMsg, {
-                strings: "Hi, I am a developer  based in Denmark.",
-                speed: 75,
-                loop: false,
-                }).go();
-            } else {
-                console.error("Element with ID 'welcomeMsg' not found.");
-            }
+            new TypeIt(welcomeMsg.value, {
+            strings: "Hi, I am a developer based in Denmark.",
+            speed: 85,
+            loop: false,
+            }).go();
+        } else {
+            console.error("Element with ID 'welcomeMsg' not found.");
+        }
         });
-  }
+
+        return {welcomeMsg, showModal, toggleModal}
+    },
 }
 </script>
 

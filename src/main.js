@@ -1,3 +1,4 @@
+/* Vue Imports */
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -8,6 +9,7 @@ import { MdMorehoriz } from 'oh-vue-icons/icons'
 import { FaCode } from "oh-vue-icons/icons"
 import { OhVueIcon, addIcons } from "oh-vue-icons"
 import { GiHamburgerMenu } from "oh-vue-icons/icons"
+import { FaRegularWindowClose } from "oh-vue-icons/icons"
 import { ViFileTypeVue } from "oh-vue-icons/icons"
 import { CoDotNet } from "oh-vue-icons/icons"
 import { ViFileTypeCsharp2 } from "oh-vue-icons/icons"
@@ -19,7 +21,10 @@ import { ViFileTypeCss } from "oh-vue-icons/icons"
 import { CoJavascript } from "oh-vue-icons/icons"
 import { BiEmojiSmileUpsideDownFill } from "oh-vue-icons/icons"
 
+/* Other Imports */
+import { VCodeBlock } from '@wdns/vue-code-block';
 
+/* Component Imports */
 import App from './App.vue'
 import HomePage from './components/Home.vue'
 import Projects from './components/Projects.vue'
@@ -33,7 +38,6 @@ const router = createRouter({
         { path: '/', component: HomePage},
     ]
 });
-
 
 addIcons(
     BiEmojiSmileUpsideDownFill,
@@ -50,12 +54,15 @@ addIcons(
     ViFileTypePython,
     ViFileTypeHtml,
     ViFileTypeCss,
-    CoJavascript
+    CoJavascript,
+    FaRegularWindowClose
 );
 
 const app = createApp(App);
 
 app.component("v-icon", OhVueIcon);
+app.component('VCodeBlock', VCodeBlock);
+
 app.use(router);
 app.mount('#app');
 
