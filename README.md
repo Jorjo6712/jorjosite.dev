@@ -1,4 +1,3 @@
-
 # jorjosite.dev
 
 This website is my own homepage.
@@ -10,9 +9,9 @@ LINK: https://jorjosite.dev
 
 **Client:** Vue.js, TailwindCSS, Three.js
 
-**Backend:** Node, Flask [API] with Flask-PyMongo
+**Backend:** Node, Flask [API]
 
-**Database:** MongoDB 
+**Database:** MongoDB
 
 
 ## Screenshots
