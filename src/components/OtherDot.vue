@@ -1,23 +1,40 @@
 <template>
-    <div class="flex justify-center items-center max-w-lg max-h-lg mx-auto" >
-        <div class="max-w-lg max-h-lg flex mx-auto mt-20 justify-center items-center">
-            <div class="rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-                <div class="py-4 px-6">
-                    <p class="text-base text-center text-neutral-600 dark:text-neutral-200">
-                        different page 2
-                    </p>
-                </div>
-            </div>
-        </div> 
-    </div>
+<div class="flex justify-center items-center mt-4">
+  <button class="rounded-2xl focus:outline-none focus:ring-0 focus:ring-offset-2 text-white hover:bg-white hover:text-black hover:transition ease-in-out duration-300 px-6 py-3" @click="getComments">Get comments</button>
+    <div class="flex flex-row justify-center items-centerw-1/4">
+    <ul class="flex-col">
+      <li class="mt-4" v-for="comment in comments" :key="comment.id" data-test="comment">
+        <h1 class="py-4 bg-white text-black rounded-xl mb-0.5">{{ comment.author }}</h1>
+        <h1 class="py-4 bg-white text-black rounded-xl mb-0.5">{{ comment.message }}</h1>
+        <h1 class="py-4 bg-white text-black rounded-xl mb-0.5">{{ comment.timestamp }}</h1>
+      </li>
+    </ul>
+  </div>
+</div>
 </template>
     
 <script>
+import axios from 'axios'
 
 export default {
     name: "OtherDot",
-    props:{},
-    components: { 
-    }
-    }
+    props: {
+
+    },
+    data() {
+    return {
+      comments: null,
+    };
+  },
+  methods: {
+    async getComments() {
+      try {
+        const response = await axios.get("http://172.18.100.113:3000/comments")
+        this.comments = response.data
+      } catch (error) {
+        console.error('Error fetching comments:', error)
+      }
+    },
+  },
+}
 </script>
