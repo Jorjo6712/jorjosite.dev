@@ -2,7 +2,7 @@
 
 This website is my own homepage.
 
-LINK: https://jorjosite.dev
+LINK: https://jorjosite.dev (not functional, page still in development)
 
 
 ## Tech Stack
