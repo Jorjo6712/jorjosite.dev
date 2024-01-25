@@ -2,7 +2,6 @@
 <div class="fixed inset-0 overflow-y-auto w-full">
     <div class="flex items-center justify-center h-4/5 w-52">
         <div class="fixed flex justify-center items-center inset-0 bg-transparent w-full">
-            <Transition enter-from-class="scale-in-center" leave-to-class="scale-out-center">
             <div class="bg-gray-900 flex justify-center item-center border-purple-300 border-4 p-4 rounded-xl shadow-md">
                 <div class="mb-4 float-start">
                     <button @click="this.toggleModal" class="text-gray-600 hover:text-red-500 hover:border-gray-700 focus:outline-none border-gray-600 mb-4">
@@ -10,23 +9,21 @@
                     </button>
                     <h2 class="text-2xl text-white font-bold">{{ modalHeader }}</h2>
                 </div>
-                <div class="ml-32 w-3/4 h-2/4 mt-12">
-                    <VCodeBlock 
+                <div class="ml-32 w-3/4 h-2/4 mt-12 ">
+                    <VCodeBlock
                         prismjs
-                        :code=textContent 
+                        :code=textContent
                         :lang=localLangName
-                        :copy-icons=false   
                     />
+                    <div ref="code" name="placeholder"></div>
                 </div>
             </div>
-            </Transition>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-import { ref } from 'vue'
 // eslint-disable-next-line
 import Prism from 'prismjs'
 import 'prismjs/components/prism-csharp'
@@ -34,144 +31,60 @@ import 'prismjs/components/prism-python'
 import langs from '../data/langs'
 
 export default {
-    name: "langInfoModal",
-    props: {
-        langName: String,
-        toggleModal: Function,
+  name: "langInfoModal",
+  props: {
+    langName: String,
+    toggleModal: Function,
+  },
+  data() {
+    return {
+      localLangName: this.langName,
+      localToggleModal: this.toggleModal(), 
+      textContent: "",
+      modalHeader: "",
+    };
+  },
+  watch: {
+    langName(val) {
+      this.localLangName = val;
+      this.infoBasedOnLang(this.localLangName);
     },
-    data() {
-        return {
-            localLangName: this.langName,
-            localToggleModal: this.toggleModal(),
-            textContent: "",
-            modalHeader: "",
-        }
+    toggleModal(val) {
+      this.localToggleModal = val;
     },
-    watch: {
-        langName(val) {
-            this.localLangName = ref(val)
-            this.infoBasedOnLang(this.localLangName)
-        },
-        toggleModal(val) {
-            this.localToggleModal = val
-        }
+  },
+  methods: {
+    infoBasedOnLang(localLangName) {
+      switch (localLangName) {
+        case 'python':
+          this.modalHeader = langs.python.modalHeader;
+          this.textContent = langs.python.textContent;
+          break;
+        case 'csharp':
+          this.modalHeader = langs.csharp.modalHeader;
+          this.textContent = langs.csharp.textContent;
+          break;
+        case 'html':
+          this.modalHeader = langs.html.modalHeader;
+          this.textContent = langs.html.textContent;
+          break;
+        case 'css':
+          this.modalHeader = langs.css.modalHeader;
+          this.textContent = langs.css.textContent;
+          break;
+        case 'javascript':
+          this.modalHeader = langs.javascript.modalHeader;
+          this.textContent = langs.javascript.textContent;
+          break;
+        default:
+          this.textContent = "language not recognized";
+          break;
+      }
     },
-    methods: {
-        infoBasedOnLang(localLangName) {
-            switch(localLangName){
-                case 'python':
-                    this.modalHeader = "Python"
-                    this.textContent = `print("Hello World")`
-                    break
-                case 'csharp':
-                    this.modalHeader = langs.csharp.modalHeader
-                    this.textContent = langs.csharp.textContent
-                    break
-                case 'html':
-                    this.modalHeader = "HTML"
-                    this.textContent = "some HTML"
-                    break
-                case 'css':
-                    this.modalHeader = "CSS"
-                    this.textContent = "some CSS"
-                    break
-                case 'javascript':
-                    this.modalHeader = "JavaScript"
-                    this.textContent = "some JS"
-                    break
-                default:
-                    this.textContent = "language not recognized"
-                    break
-            }
-        },
-    }
-}
+  },
+};
 </script>
 
 <style scoped>
-.scale-in-center {
-	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.scale-out-center {
-	-webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-
-/* ----------------------------------------------
- * Generated by Animista on 2024-1-11 12:6:49
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-
-/**
- * ----------------------------------------
- * animation scale-in-center
- * ----------------------------------------
- */
- @-webkit-keyframes scale-in-center {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-}
-@keyframes scale-in-center {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* ----------------------------------------------
- * Generated by Animista on 2024-1-11 12:9:14
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-
-/**
- * ----------------------------------------
- * animation scale-out-center
- * ----------------------------------------
- */
- @-webkit-keyframes scale-out-center {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    opacity: 1;
-  }
-}
-@keyframes scale-out-center {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    opacity: 1;
-  }
-}
-
 
 </style>

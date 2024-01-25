@@ -4,7 +4,7 @@
       <router-view v-slot="{ Component }">
         <transition enter-from-class="slide-in-opacity" enter-active-class="slide-in-bottom" leave-active-class="slide-out-bottom" leave-to-class="slide-out-opacity" mode="out-in">
           <component :is="Component" />
-        </transition>
+        </transition> 
       </router-view>
   </div>
 </template>

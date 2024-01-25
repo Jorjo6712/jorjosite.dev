@@ -5,7 +5,7 @@ csharp: {
             `
 namespace HelloWorld
 {
-    class Hello {		 
+    internal class Hello {		 
         static void Main(string[] args)
         {
             System.Console.WriteLine("Hello World");
@@ -13,6 +13,39 @@ namespace HelloWorld
     }
 }            
     `,
+},
+python: {
+    modalHeader: "Python",
+    textContent: 
+    `
+print("I learned python blah blah")
+    `
+},
+
+html: {
+    modalHeader: "HTML",
+    textContent: 
+    `
+<p> I learned html blah blah </p>
+    `
+},
+
+css: {
+    modalHeader: "CSS",
+    textContent:
+    `
+p {
+content: "I learned css blah blah"
+}
+    `
+},
+
+javascript: {
+    modalHeader: "JavaScript",
+    textContent:
+    `
+alert("I learned javascript blah blah");
+    `
 }
 
 
