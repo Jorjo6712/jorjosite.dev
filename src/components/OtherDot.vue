@@ -5,31 +5,38 @@
     <h1 class="">{{ comment.message }}</h1>
     <h1 class="">{{ comment.timestamp }}</h1>
   </li>
+  <input onsubmit=""/>
+  <input onsubmit=""/>
 </div>
 </template>
     
 <script>
 import axios from 'axios'
+import { onMounted }  from 'vue'
 
 export default {
     name: "OtherDot",
     props: {
 
     },
-    data() {
-    return {
-      comments: null,
-    };
-  },
-  methods: {
-    async getComments() {
-      try {
-        const response = await axios.get("http://172.18.100.113:3000/comments")
-        this.comments = response.data
-      } catch (error) {
-        console.error('Error fetching comments:', error)
-      }
-    },
-  },
+    setup() {
+      
+      let comments = {}
+      
+      onMounted(() => {
+         getComments()
+      });
+
+     const getComments = () => {
+        try {
+          const response = axios.get("http://172.18.100.113:3000/comments")
+          this.comments = response.data
+        } catch (error) {
+          console.error('Error fetching comments:', error)
+        }
+      };
+
+      return {comments, getComments}
+    }
 }
 </script>

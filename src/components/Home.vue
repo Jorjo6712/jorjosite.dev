@@ -3,7 +3,9 @@
     <div class="max-w-lg max-h-lg flex mt-20 justify-center items-center">
         <div class="rounded-lg shadow bg-gray-900 acrylic">
             <div class="py-4 px-6">
-                <p ref="welcomeMsg" class="text-base text-center font-bold text-neutral-200 opacity-100"/>
+                <p class="text-base text-center font-bold text-neutral-200 opacity-100">
+                    {{ welcomeMessage }}
+                </p>
             </div>
         </div>
     </div>
@@ -52,7 +54,7 @@
 
 <script>
 import TypeIt from "typeit" 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 
 import langInfoModal from "./langInfoModal.vue"
 
@@ -61,24 +63,23 @@ export default {
     components: {
         langInfoModal
     },
-    data() {
-        return {
-            langName: null,
-        }
-    },
     setup() {
-        let showModal = ref(true)
+        let langName = ref();
+        let showModal = ref(false)
+
         const toggleModal = () => (showModal.value = !showModal.value)
 
-        const welcomeMsg = ref(null);
+        let welcomeMsg = ref(null);
 
-        onMounted(() => {
+        onMounted(async () => {
+        await nextTick()
+
         if (welcomeMsg.value) {
-            welcomeMsg.value.innerHTML = '';
+            welcomeMsg.value = '';
 
             new TypeIt(welcomeMsg.value, {
             strings: "Hi, I am a developer based in Denmark.",
-            speed: 85,
+            speed: 50,
             loop: false,
             }).go();
         } else {
@@ -86,7 +87,7 @@ export default {
         }
         });
 
-        return {welcomeMsg, showModal, toggleModal}
+        return {welcomeMsg, showModal, toggleModal, langName}
     },
 }
 </script>

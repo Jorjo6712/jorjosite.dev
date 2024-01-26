@@ -38,9 +38,9 @@ export default {
     
     },
     setup() {
-    let showMenu = ref(false);
-    const toggleNav = () => (showMenu.value = !showMenu.value);
-    return { showMenu, toggleNav };
+        let showMenu = ref(false);
+        const toggleNav = () => (showMenu.value = !showMenu.value);
+        return { showMenu, toggleNav };
   },
 }
 </script>

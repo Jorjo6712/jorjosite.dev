@@ -12,11 +12,6 @@ CORS(app)
 app.config["MONGO_URI"] = MONGODB_URI
 mongo = PyMongo(app)
 
-@app.route('/')
-def index():
-    comments = list(mongo.db.comments.find())    
-    return parse_json(comments), 200
-
 def parse_json(data):
     return json.loads(json_util.dumps(data))
 
