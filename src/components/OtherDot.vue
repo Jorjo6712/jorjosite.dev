@@ -1,42 +1,40 @@
 <template>
-<div class="">
-  <li class="" v-for="comment in comments" :key="comment.id" data-test="comment">
-    <h1 class="">{{ comment.author }}</h1>
-    <h1 class="">{{ comment.message }}</h1>
-    <h1 class="">{{ comment.timestamp }}</h1>
-  </li>
-  <input onsubmit=""/>
-  <input onsubmit=""/>
-</div>
+  <div>
+    <ul>
+      <li v-for="comment in comments" :key="comment.id" data-test="comment">
+        <h1>{{ comment.author }}</h1>
+        <p>{{ comment.message }}</p>
+        <p>{{ comment.timestamp }}</p>
+      </li>
+    </ul>
+    <form @submit.prevent="addComment">
+      <input v-model="newComment.author" placeholder="Author" />
+      <input v-model="newComment.message" placeholder="Message" />
+      <button type="submit">Add Comment</button>
+    </form>
+  </div>
 </template>
-    
+
 <script>
-import axios from 'axios'
-import { onMounted }  from 'vue'
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
 
 export default {
-    name: "OtherDot",
-    props: {
+  name: "OtherDot",
+  props: {},
+  setup() {
+    let comments = ref({});
 
-    },
-    setup() {
-      
-      let comments = {}
-      
-      onMounted(() => {
-         getComments()
-      });
+    onMounted(async () => {
+      try {
+        const response = await axios.get('http://10.0.0.223:3000/comments');
+        comments.value = response.data;
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    });
 
-     const getComments = () => {
-        try {
-          const response = axios.get("http://172.18.100.113:3000/comments")
-          this.comments = response.data
-        } catch (error) {
-          console.error('Error fetching comments:', error)
-        }
-      };
-
-      return {comments, getComments}
-    }
-}
+    return { comments };
+  },
+};
 </script>

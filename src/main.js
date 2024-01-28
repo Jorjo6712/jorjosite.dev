@@ -61,7 +61,8 @@ addIcons(
 const app = createApp(App);
 
 app.component("v-icon", OhVueIcon);
-app.component('VCodeBlock', VCodeBlock);
+app.component("VCodeBlock", VCodeBlock);
+
 
 app.use(router);
 app.mount('#app');

@@ -3,9 +3,7 @@
     <div class="max-w-lg max-h-lg flex mt-20 justify-center items-center">
         <div class="rounded-lg shadow bg-gray-900 acrylic">
             <div class="py-4 px-6">
-                <p class="text-base text-center font-bold text-neutral-200 opacity-100">
-                    {{ welcomeMessage }}
-                </p>
+                <p ref="welcomeMsg" class="text-base text-center font-bold text-neutral-200 opacity-100"/>
             </div>
         </div>
     </div>
@@ -53,15 +51,16 @@
 </template>
 
 <script>
-import TypeIt from "typeit" 
-import { ref, onMounted, nextTick } from 'vue'
+
+import { ref, onMounted } from 'vue'
+import TypeIt from 'typeit'
 
 import langInfoModal from "./langInfoModal.vue"
 
 export default {
     name: "HomePage",
     components: {
-        langInfoModal
+        langInfoModal,
     },
     setup() {
         let langName = ref();
@@ -69,24 +68,20 @@ export default {
 
         const toggleModal = () => (showModal.value = !showModal.value)
 
-        let welcomeMsg = ref(null);
+        const welcomeMsg = ref(null);
 
-        onMounted(async () => {
-        await nextTick()
-
-        if (welcomeMsg.value) {
-            welcomeMsg.value = '';
-
-            new TypeIt(welcomeMsg.value, {
-            strings: "Hi, I am a developer based in Denmark.",
-            speed: 50,
-            loop: false,
-            }).go();
-        } else {
-            console.error("Element with ID 'welcomeMsg' not found.");
-        }
+        onMounted(() => {
+            if (welcomeMsg.value) {
+                welcomeMsg.value.innerHTML = '';
+                new TypeIt(welcomeMsg.value, {
+                    strings: "Hi, I am a developer based in Denmark.",
+                    speed: 50,
+                    loop: false,
+                }).go();
+            } else {
+                console.error("Element with ID 'welcomeMsg' not found.");
+            }
         });
-
         return {welcomeMsg, showModal, toggleModal, langName}
     },
 }
