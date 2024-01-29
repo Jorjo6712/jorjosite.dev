@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="comment in comments" :key="comment.id" data-test="comment">
+      <li v-for="comment in comments.data" :key="comment.id" data-test="comment">
         <h1>{{ comment.author }}</h1>
         <p>{{ comment.message }}</p>
         <p>{{ comment.timestamp }}</p>
@@ -16,25 +16,36 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import axios from 'axios'
+import { reactive, onMounted } from 'vue'
 
 export default {
   name: "OtherDot",
   props: {},
   setup() {
-    let comments = ref({});
+
+    let comments = reactive({
+      data: [],
+    })
+
+    let newComment = reactive({
+      data:[],
+    })
 
     onMounted(async () => {
       try {
-        const response = await axios.get('http://10.0.0.223:3000/comments');
-        comments.value = response.data;
+        const response = await axios.get('http://172.18.100.113:3000/comments')
+        comments.data = response.data
+        console.log(response.data)
       } catch (error) {
-        console.error('Error fetching comments:', error);
+        console.error('Error fetching comments:', error)
       }
     });
 
-    return { comments };
+    return { comments, newComment }
   },
-};
+
+    const request = await axios.post('http://172.18.100.113:3000/comments')
+    newComment.data = request.data
+}
 </script>

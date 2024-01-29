@@ -43,45 +43,45 @@ export default {
     const state = reactive({
       textContent: null,
       modalHeader: null,
-    });
+    })
 
     watch(() => props.langName, (val) => {
-      infoBasedOnLang(val);
-    });
+      infoBasedOnLang(val)
+    })
 
     function infoBasedOnLang(lang) {
       console.log(lang)
 
       switch (lang) {
         case 'python':
-          state.modalHeader = langs.python.modalHeader;
-          state.textContent = langs.python.textContent;
-          break;
+          state.modalHeader = langs.python.modalHeader
+          state.textContent = langs.python.textContent
+          break
         case 'csharp':
-          state.modalHeader = langs.csharp.modalHeader;
-          state.textContent = langs.csharp.textContent;
-          break;
+          state.modalHeader = langs.csharp.modalHeader
+          state.textContent = langs.csharp.textContent
+          break
         case 'html':
-          state.modalHeader = langs.html.modalHeader;
-          state.textContent = langs.html.textContent;
-          break;
+          state.modalHeader = langs.html.modalHeader
+          state.textContent = langs.html.textContent
+          break
         case 'css':
-          state.modalHeader = langs.css.modalHeader;
-          state.textContent = langs.css.textContent;
-          break;
+          state.modalHeader = langs.css.modalHeader
+          state.textContent = langs.css.textContent
+          break
         case 'javascript':
-          state.modalHeader = langs.javascript.modalHeader;
-          state.textContent = langs.javascript.textContent;
-          break;
+          state.modalHeader = langs.javascript.modalHeader
+          state.textContent = langs.javascript.textContent
+          break
         default:
-          state.textContent = "language not recognized";
-          break;
+          state.textContent = "language not recognized"
+          break
       }
     }
 
     return {state, infoBasedOnLang}
   },
-};
+}
 </script>
 
 <style scoped>

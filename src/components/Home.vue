@@ -63,23 +63,23 @@ export default {
         langInfoModal,
     },
     setup() {
-        let langName = ref();
+        let langName = ref()
         let showModal = ref(false)
 
         const toggleModal = () => (showModal.value = !showModal.value)
 
-        const welcomeMsg = ref(null);
+        const welcomeMsg = ref(null)
 
         onMounted(() => {
             if (welcomeMsg.value) {
-                welcomeMsg.value.innerHTML = '';
+                welcomeMsg.value.innerHTML = ''
                 new TypeIt(welcomeMsg.value, {
                     strings: "Hi, I am a developer based in Denmark.",
                     speed: 50,
                     loop: false,
-                }).go();
+                }).go()
             } else {
-                console.error("Element with ID 'welcomeMsg' not found.");
+                console.error("Element with ID 'welcomeMsg' not found.")
             }
         });
         return {welcomeMsg, showModal, toggleModal, langName}
@@ -89,6 +89,6 @@ export default {
 
 <style>
 * {
-  font-family: "Archivo";
+  font-family: "Archivo"
 }
 </style>

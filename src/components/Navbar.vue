@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 
 export default {
@@ -38,9 +38,9 @@ export default {
     
     },
     setup() {
-        let showMenu = ref(false);
-        const toggleNav = () => (showMenu.value = !showMenu.value);
-        return { showMenu, toggleNav };
+        let showMenu = ref(false)
+        const toggleNav = () => (showMenu.value = !showMenu.value)
+        return { showMenu, toggleNav }
   },
 }
 </script>
