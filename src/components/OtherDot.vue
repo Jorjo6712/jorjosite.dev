@@ -44,8 +44,5 @@ export default {
 
     return { comments, newComment }
   },
-
-    const request = await axios.post('http://172.18.100.113:3000/comments')
-    newComment.data = request.data
 }
 </script>

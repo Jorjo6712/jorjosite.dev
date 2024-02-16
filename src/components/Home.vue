@@ -7,10 +7,9 @@
             </div>
         </div>
     </div>
-    <div class="lg:h-full lg:w-5/12 lg:mt-16 lg:mb-4 lg:pt-10 lg:pb-10 lg:px-12 min-[320px]:h-full min-[320px]:w-11/12 min-[320px]:mt-16 min-[320px]:mb-4 min-[320px]:pt-10 min-[320px]:pb-10 min-[320px]:px-4 shadow shadow-black bg-gray-900 rounded-xl flex-col justify-center items-center"> 
+    <div class="lg:h-full lg:w-5/12 lg:mt-16 lg:mb-4 lg:pt-10 lg:pb-10 lg:px-12 min-[320px]:h-full min-[320px]:w-11/12 min-[320px]:mt-16 min-[320px]:mb-4 min-[320px]:pt-10 min-[320px]:pb-10 min-[320px]:px-4 shadow shadow-black bg-gray-900 rounded-xl flex-col justify-center items-center">
         <h1 class="text-4xl text-white font-bold">Yordan Mitov</h1>
         <h2 class="text-xl text-gray-600 font-bold mt-0.5"><v-icon name='fa-code' scale='1.3'/> Systems Developer</h2>
-        <h1 class="text-2xl text-white font-shadow mt-5 "># Background </h1>
         <hr class="border-purple-400 border-y-2 mt-2 mb-2 rounded-xl"/>
         <p class="text-neutral-200 lg:text-lg lg:text-justify min-[320px]:text-base min-[320px]:text-wrap">
             I'm a 19 year old studying in Ringsted, Denmark. 
@@ -18,35 +17,44 @@
             but back then I never could get the gitst of it. Today I feel more confident in my ability to code so as of 
             May 2023 I am a Datatechnican with a speciality in Programming or in other words a systems developer student.
             Formerly I studied It-Support but had no general interest in it aside from the salary that I was going to use
-             to fund my greater goal of certifying myself to become a RedTeam member or otherwise Penetration Tester as 
-             cybersecurity is another big interest of mine. Nowadays I sort of have a bit of knowhow in most fields
-              of IT so I'm never bored. I've learned many great things along the way and hope to learn more as time
-               goes <v-icon name='bi-emoji-smile-upside-down-fill' fill="yellow" scale='1.3'/>.  
+            to fund my greater goal of certifying myself to become a RedTeam member or otherwise Penetration Tester as 
+            cybersecurity is another big interest of mine. Nowadays I sort of have a bit of knowhow in most fields
+            of IT so I'm never bored. I've learned many great things along the way and hope to learn more as time
+            goes <v-icon name='bi-emoji-smile-upside-down-fill' fill="yellow" scale='1.3'/>.  
         </p>
-        <div class="items-center text-white text-2xl bolder"># Languages</div>
-        <hr class="border-purple-400 border-y-2 mt-2 mb-2 rounded-xl"/>
-        <div class="lg:flex lg:flex-row lg:flex-shrink min-[320px]:grid min-[320px]:grid-flow-col min-[320px]:grid-cols-2 min-[320px]:grid-rows-3 min-[320px]:w-full">
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-blue-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='python'" name="vi-file-type-python" scale="4" animation="pulse" hover/></div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-green-700 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='csharp'" name="vi-file-type-csharp2" scale="4" animation="pulse" hover/>
-            </div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-orange-500 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='html'" name="vi-file-type-html" scale="4" animation="pulse" hover/>
-            </div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-blue-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='css'" name="vi-file-type-css" scale="4" animation="pulse" hover/>
-            </div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-yellow-300 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon @click="toggleModal(), langName='javascript'" name="co-javascript" scale="4" animation="pulse" fill="yellow" hover/>
-            </div>
+    </div>
+    <h1 class="justify-center text-3xl mb-2 text-white text-"> Frameworks & Tools</h1>
+    <div class="lg:flex lg:flex-row lg:gap-4 lg:flex-wrap lg:justify-center lg:items-center lg:mb-2 lg:h-full lg:w-6/12 min-[320px]:grid min-[320px]:grid-cols-1 min-[320px]:grid-rows-4 min-[320px]:gap-4">
+        <div class="lg:w-4/12 lg:justify-start lg:items-center lg:py-2 min-[320px]: min-[320px]:px-4 min-[320px]:py-2 rounded-xl bg-gray-900 shadow shadow-black">
+            <v-icon name="vi-file-type-reactjs" scale='3'/>
+            <h1 class="text-white"> React.js </h1>
+            <hr class="border-gray-600 w-16">
+            <p class="text-white mt-1.5"> 
+                I am going to be learning React for the next couple of months
+                and using it along with typescript for other projects as a change
+                of pace from using Vue.
+            </p>
         </div>
-        <div class="items-center text-white text-2xl bolder"># Frameworks & Tools</div>
-        <hr class="border-purple-400 border-y-2 mt-2 mb-2 rounded-xl"/>
-        <div class="lg:flex lg:flex-row min-[320px]:grid min-[320px]:grid-flow-col min-[320px]:grid-cols-2 min-[320px]:grid-rows-3 min-[320px]:w-full">
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-green-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="vi-file-type-vue" scale="4" animation="pulse" hover/></div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-cyan-400 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="si-tailwindcss" scale="4" animation="pulse" fill="cyan" hover/></div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-white border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="si-threedotjs" scale="4" animation="pulse" fill="white" hover/></div>
-            <div class="p-2 mt-1 ml-5 lg:w-[104px] acrylic border-purple-700 border-4 rounded bg-slate-900 min-[320px]:flex min-[320px]:justify-center min-[320px]:items-center min-[320px]:w-9/12 min-[320px]:mb-1.5"><v-icon name="co-dot-net" scale="4" animation="pulse" inverse hover/>
-            </div>
+        <div class="lg:w-4/12 lg:flex-wrap lg:justify-start lg:items-center lg:py-2 min-[320px]:px-4 min-[320px]:py-2 rounded-xl bg-gray-900 shadow shadow-black">
+            <v-icon name="vi-file-type-vue" scale='3'/>
+            <h1 class="text-white"> Vue.js </h1>
+            <hr class="border-gray-600 w-14">
+            <p class="text-white mt-1.5"> 
+                I am currently learning Vue and wrote this portfolio using it.
+                I think it's a fine framework to use for reactive frontends
+                and it's been really kind to me 
+            </p>
+        </div>
+        <div class="lg:w-4/12 lg:flex-wrap lg:justify-start lg:items-center lg:py-2 min-[320px]:px-4 min-[320px]:py-2 rounded-xl bg-gray-900 shadow shadow-black">
+            <v-icon name="si-tailwindcss" fill="cyan" scale='3'/>
+            <h1 class="text-white"> Tailwind </h1>
+            <hr class="border-gray-600 w-16">
+        </div>
+        <div class="lg:w-4/12 lg:flex-wrap lg:justify-start lg:items-center lg:py-2 min-[320px]:px-4 min-[320px]:py-2 rounded-xl bg-gray-900 shadow shadow-black">
+            <v-icon name="co-dot-net" scale='3' inverse/>
+            <h1 class="text-white"> .NET </h1>
         </div>
     </div>
-    <langInfoModal :class="showModal ? 'flex' : 'hidden'" :toggleModal="toggleModal" :langName="langName"/>
 </div>
 </template>
 
@@ -55,19 +63,11 @@
 import { ref, onMounted } from 'vue'
 import TypeIt from 'typeit'
 
-import langInfoModal from "./langInfoModal.vue"
-
 export default {
     name: "HomePage",
     components: {
-        langInfoModal,
     },
     setup() {
-        let langName = ref()
-        let showModal = ref(false)
-
-        const toggleModal = () => (showModal.value = !showModal.value)
-
         const welcomeMsg = ref(null)
 
         onMounted(() => {
@@ -82,7 +82,7 @@ export default {
                 console.error("Element with ID 'welcomeMsg' not found.")
             }
         });
-        return {welcomeMsg, showModal, toggleModal, langName}
+        return { welcomeMsg }
     },
 }
 </script>

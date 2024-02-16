@@ -20,9 +20,9 @@ import { ViFileTypeHtml } from "oh-vue-icons/icons"
 import { ViFileTypeCss } from "oh-vue-icons/icons"
 import { CoJavascript } from "oh-vue-icons/icons"
 import { BiEmojiSmileUpsideDownFill } from "oh-vue-icons/icons"
+import { ViFileTypeReactjs } from "oh-vue-icons/icons"
 
 /* Other Imports */
-import { VCodeBlock } from '@wdns/vue-code-block';
 
 /* Component Imports */
 import App from './App.vue'
@@ -55,14 +55,13 @@ addIcons(
     ViFileTypeHtml,
     ViFileTypeCss,
     CoJavascript,
-    FaRegularWindowClose
+    FaRegularWindowClose,
+    ViFileTypeReactjs
 );
 
 const app = createApp(App);
 
 app.component("v-icon", OhVueIcon);
-app.component("VCodeBlock", VCodeBlock);
-
 
 app.use(router);
 app.mount('#app');
