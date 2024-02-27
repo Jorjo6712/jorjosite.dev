@@ -1,5 +1,6 @@
 import os
 import json
+import bleach
 from flask import Flask, request
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -23,7 +24,14 @@ def comments_get():
 @app.route('/comments', methods=['POST'])
 def comments_post():
     comment = request.get_json()
-    new_comment = mongo.db.comments.insert_one(comment)
+
+    sanitized_comment = {
+        'author': bleach.clean(comment.get('author')),
+        'message': bleach.clean(comment.get('message')),
+        'timestamp': comment.get('timestamp')
+    }
+
+    new_comment = mongo.db.comments.insert_one(sanitized_comment)
     return parse_json(new_comment.inserted_id), 201
 
 if __name__ == "__main__":
