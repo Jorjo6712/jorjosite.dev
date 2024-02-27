@@ -7,7 +7,7 @@
     </div>
     <ul :class="showMenu ? 'flex' : 'hidden'" class="flex-col justify-center items-center mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-3 md:mt-0 ">
         <router-link to="/">
-            <button class="rounded-2xl focus:outline-none focus:ring-0 focus:ring-offset-2 text-white hover:bg-white hover:text-black hover:transition ease-in-out duration-300 px-6 py-3 inline-flex justify-center items-center">
+            <button class="rounded-2xl focus:outline-none focus:ring-0 focus:ring-offset-2 text-white dark:hover:bg-white hover:text-black hover:transition ease-in-out duration-300 px-6 py-3 inline-flex justify-center items-center">
                 <span>Home</span>
                 <v-icon name="bi-house-fill"/>
             </button>
@@ -37,6 +37,8 @@ export default {
     components: { 
     
     },
+
+    // Navbar toggling
     setup() {
         let showMenu = ref(false)
         const toggleNav = () => (showMenu.value = !showMenu.value)

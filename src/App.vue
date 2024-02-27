@@ -19,7 +19,7 @@ export default {
   components: {
     NavBar
   },
-  mounted() {
+ async mounted() {
     const container = this.$refs.container;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -37,7 +37,7 @@ export default {
 
     const loader = new GLTFLoader();
 
-    loader.load( 'scene.gltf', function ( gltf ) {
+    await loader.load( 'scene.gltf', function ( gltf ) {
 
       scene.add( gltf.scene );
 
@@ -86,16 +86,16 @@ body {
 }
 
   * {
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: #282828;
   }
 
   *::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
   }
 
   *::-webkit-scrollbar-track {
-    background: #333264;
+    background: transparent;
   }
 
   *::-webkit-scrollbar-thumb {
