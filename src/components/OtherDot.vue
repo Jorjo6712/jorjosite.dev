@@ -84,7 +84,7 @@ export default {
           timestamp: new Date(),
         })}
 
-        await (await v$.value.$validate() ? postDetails().then(getComments) : alert("Consider suicide"))
+        await (await v$.value.$validate() ? postDetails().then(getComments) : alert("Invalid form"))
       } catch (error) {
         console.error('Error posting comment:', error);
       }
