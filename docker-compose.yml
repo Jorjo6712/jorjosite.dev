@@ -14,14 +14,15 @@ services:
     build:
       context: ./src/API/
     ports:
-      - "3000:3000"
+      - "56041:56041"
     env_file: .env    
 
   mongodb:
     container_name: mongo
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - "43214:43214"
+    command: mongod --port 43214
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${ROOT_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${ROOT_PASS}
@@ -37,4 +38,4 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MEXP_ADMIN}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MEXP_PASS}
       ME_CONFIG_MONGODB_SERVER: mongo
-      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_PORT: 43214
