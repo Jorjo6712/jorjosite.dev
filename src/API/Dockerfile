@@ -10,4 +10,4 @@ COPY . /app
 
 ENV FLASK_APP=api:app
 
-CMD ["gunicorn", "-b", "0.0.0.0:3000", "api:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:56041", "api:app"]

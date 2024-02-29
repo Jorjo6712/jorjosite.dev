@@ -35,7 +35,7 @@ def comments_post():
     sanitized_comment = {
         'author': bleach.clean(newComment.get('author')),
         'message': bleach.clean(newComment.get('message')),
-        'timestamp': newComment.get('timestamp')
+        'timestamp': bleach.clean(newComment.get('timestamp'))
     }
 
     mongo.db.comments.insert_one(sanitized_comment)
@@ -47,6 +47,6 @@ def comments_post():
     return jsonify(response_data), 201
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=3000)
+    app.run(host='0.0.0.0', port=56041)
 
    
