@@ -69,7 +69,7 @@ export default {
 
     const getComments = async () => {
       try {
-        const response = await axios.get('http://172.18.100.77:56041/comments')
+        const response = await axios.get('http://127.0.0.1:56041/comments')
         comments.value = response.data.comments
       } catch (error) {
         console.error('Error fetching comments:', error)
@@ -78,7 +78,7 @@ export default {
 
     const postComment = async () => {
       try {
-        const postDetails = async () => { await axios.post('http://172.18.100.77:56041/comments', {
+        const postDetails = async () => { await axios.post('http://127.0.0.1:56041/comments', {
           author: newComment.author,
           message: newComment.message,
           timestamp: new Date(),
