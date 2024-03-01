@@ -47,6 +47,6 @@ def comments_post():
     return jsonify(response_data), 201
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=56041)
+    app.run(host='0.0.0.0', port=56041)
 
    

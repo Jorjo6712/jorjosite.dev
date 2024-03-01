@@ -1,4 +1,4 @@
-FROM node:stable as builder
+FROM node:current as builder
 
 WORKDIR /app
 
