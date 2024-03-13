@@ -12,64 +12,63 @@
 <script>
 import NavBar from './components/Navbar.vue'
 import * as THREE from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 export default {
   name: 'App',
   components: {
     NavBar
   },
- async mounted() {
+  mounted() {
     const container = this.$refs.container;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({antialias: true});
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const renderer = new THREE.WebGLRenderer({antialias: true})
 
-    renderer.setSize(window.innerWidth * 2.5, window.innerHeight * 2.5);
+    renderer.setSize(window.innerWidth * 2.5, window.innerHeight * 2.5)
 
-    container.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement)
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(ambientLight);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+    scene.add(ambientLight)
 
-    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
-    scene.add(hemisphereLight);
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1)
+    scene.add(hemisphereLight)
 
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader()
 
-    await loader.load( 'scene.gltf', function ( gltf ) {
+      loader.load( 'scene.gltf', function ( gltf ) {
 
-      scene.add( gltf.scene );
+      scene.add( gltf.scene )
 
     }, undefined, function ( error ) {
 
-      console.error( error );
+      console.error( error )
 
-    } );
+    } )
    
-    scene.background = new THREE.Color(0x242345);
-    scene.backgroundBlurriness = 1;
+    scene.background = new THREE.Color(0x242345)
+    scene.backgroundBlurriness = 1
 
-    camera.position.z = 3;
-    camera.position.y = 1 ;
-    camera.position.x = 1;
+    camera.position.z = 3
+    camera.position.y = 1 
+    camera.position.x = 1
     
     const animate = function () {
 
-      camera.fov += 0.005;
+      camera.fov += 0.005
 
       if (camera.fov >= 70)
       {
-        camera.fov =- 0.5;
+        camera.fov =- 0.5
       }
 
-      camera.updateProjectionMatrix();
-      renderer.render(scene, camera);
-    };
-    renderer.setAnimationLoop(animate);
+      camera.updateProjectionMatrix()
+      renderer.render(scene, camera)
+    }
+    renderer.setAnimationLoop(animate)
   },
-};
-
+}
 </script>
 
 <style>

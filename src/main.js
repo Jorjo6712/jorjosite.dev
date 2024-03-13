@@ -37,7 +37,7 @@ const router = createRouter({
         { path: '/Other', component: OtherDot},
         { path: '/', component: HomePage},
     ]
-});
+})
 
 addIcons(
     BiEmojiSmileUpsideDownFill,
@@ -57,12 +57,12 @@ addIcons(
     CoJavascript,
     FaRegularWindowClose,
     ViFileTypeReactjs
-);
+)
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.component("v-icon", OhVueIcon);
+app.component("v-icon", OhVueIcon)
 
-app.use(router);
-app.mount('#app');
+app.use(router)
+app.mount('#app')
 

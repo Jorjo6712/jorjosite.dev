@@ -2,7 +2,7 @@
 <div>
     <form @submit.prevent="postComment"  class="flex flex-col justify-center items-center gap-4 mb-4">
       <input v-model="newComment.author" required placeholder="Author" class="bg-gray-900 shadow shadow-black text-white focus:outline-none rounded-lg p-2" />
-      <textarea v-model="newComment.message" required maxlength="1000" placeholder="comment" class="bg-gray-900 shadow shadow-black text-white resize-none focus:outline-none rounded-lg w-5/12 p-4 h-4/12" ></textarea>
+      <textarea v-model="newComment.message" maxlength="1000" placeholder="Comment" class="bg-gray-900 shadow shadow-black text-white resize-none focus:outline-none rounded-lg w-5/12 p-4 h-4/12" ></textarea>
       <button @click.prevent="postComment"  class="rounded-2xl focus:outline-none focus:ring-0 focus:ring-offset-2 text-white dark:hover:bg-white hover:text-black hover:transition ease-in-out duration-300 px-6 py-3 inline-flex justify-center items-center">Add Comment</button>
     </form>
     <div class="flex ml-46">
@@ -35,6 +35,15 @@
       </Suspense>
       </ul>
     </div>
+    <div class="flex justify-center items-center"> 
+      <p class="text-gray-600 italic text-sm underline"> 
+        As a guest, your comments will only be available for 
+        <br>
+        30 days or less as their identifier is cached.
+        <br>
+        Register or login to make a persistent comment.
+      </p>
+    </div>
 </div>
 </template>
 
@@ -51,8 +60,11 @@ export default {
     Suspense
   },
   setup() {
-
+    
+    let KEY = process.env.VUE_APP_KEY
     let comments = reactive([])
+
+    axios.defaults.headers.common['X-Key'] = KEY;
 
     const newComment = reactive({
        author: '',
@@ -65,11 +77,13 @@ export default {
         message : { required },
     }
 
+    const timeOptions = { day: '2-digit', month: '2-digit', year: 'numeric' }
+
     const v$ = useVuelidate(commentRules, newComment)
 
     const getComments = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:56041/comments')
+        const response = await axios.get('http://172.18.100.189:56041/comments')
         comments.value = response.data.comments
       } catch (error) {
         console.error('Error fetching comments:', error)
@@ -78,13 +92,14 @@ export default {
 
     const postComment = async () => {
       try {
-        const postDetails = async () => { await axios.post('http://127.0.0.1:56041/comments', {
+        const postDetails = async () => { await axios.post('http://172.18.100.189:56041/comments', {
           author: newComment.author,
           message: newComment.message,
-          timestamp: new Date(),
+          timestamp: new Date().toLocaleString('en-GB', timeOptions),
         })}
 
         await (await v$.value.$validate() ? postDetails().then(getComments) : alert("Invalid form"))
+
       } catch (error) {
         console.error('Error posting comment:', error);
       }
