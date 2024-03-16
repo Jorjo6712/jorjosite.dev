@@ -1,6 +1,7 @@
 /* Vue Imports */
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import VueClickAway from "vue3-click-away"
 
 /* Icon Imports */
 import { BiGithub } from "oh-vue-icons/icons"
@@ -62,6 +63,7 @@ addIcons(
 const app = createApp(App)
 
 app.component("v-icon", OhVueIcon)
+app.use(VueClickAway)
 
 app.use(router)
 app.mount('#app')
