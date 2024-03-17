@@ -23,13 +23,16 @@ import { CoJavascript } from "oh-vue-icons/icons"
 import { BiEmojiSmileUpsideDownFill } from "oh-vue-icons/icons"
 import { ViFileTypeReactjs } from "oh-vue-icons/icons"
 
+
 /* Other Imports */
+
 
 /* Component Imports */
 import App from './App.vue'
 import HomePage from './components/Home.vue'
 import Projects from './components/Projects.vue'
 import OtherDot from './components/OtherDot.vue'
+
 
 const router = createRouter({
     history: createWebHistory(),

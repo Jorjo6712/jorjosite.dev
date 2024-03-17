@@ -1,14 +1,13 @@
 <template>
   <div>
-      <form @submit.prevent="postComment"  class="flex flex-col justify-center items-center gap-1 mt-48 mb-4 ml-16 min-[320px]:ml-0">
-        <input @click.self="readyComment" v-model="newComment.author" placeholder="Author" maxlength="20" class="bg-gray-900 shadow shadow-black text-white focus:outline-none rounded-lg p-2 lg:w-44 xl:-ml-56 min-[320px]:w-4/12 min-[320px]:mr-16"/>
-        <textarea v-model="newComment.message" @click.self="readyComment" v-click-away="unreadyComment" maxlength="256" placeholder="Write your comment here..." class="bg-gray-900 shadow shadow-black text-white resize-none focus:outline-none rounded-lg w-3/12 p-4 min-w-2/ h-4/12" >
-        </textarea>
-        <div :class="showButton ? 'flex' : 'hidden'"  class="flex w-3/12 mr-6 justify-end mt-0.5">
-            <button class="text-white bg-green-600 rounded-2xl py-1.5 px-3 mt-0.5"> Submit </button>
+      <form @submit.prevent="postComment"  class="flex flex-col justify-center items-center gap-1 mt-48 mb-4 ml-16 min-[320px]:-ml-8">
+        <input @click.self="readyComment" v-model="newComment.author" placeholder="Author" maxlength="20" class="bg-gray-900 shadow shadow-black text-white focus:outline-none rounded-lg p-2 lg:w-44 lg:-ml-72 min-[320px]:w-4/12 min-[320px]:mr-44"/>
+        <textarea v-model="newComment.message" @click.self="readyComment" v-click-away="unreadyComment" maxlength="256" placeholder="Write your comment here..." class="bg-gray-900 shadow shadow-black text-white resize-none focus:outline-none rounded-lg lg:w-4/12 min-[320px]:mr-1 min-[320px]:w-9/12 p-4 h-4/12"/>
+        <div :class="[showButton ? 'lg:flex' : 'lg:hidden', 'lg:w-5/12 lg:mr-96 justify-end mt-0.5 min-[320px]:w-3/12 min-[320px]:ml-52 min-[320px]:flex']">
+            <button class="text-white bg-green-600 shadow shadow-black rounded-2xl py-1.5 px-3 mt-0.5"> Submit </button>
         </div>
       </form>
-      <div class="lg:-ml-10 min-[320px]:ml-2 justify-center items-center">
+      <div class="lg:-ml-60 min-[320px]:ml-2 justify-center items-center">
         <ul>
           <Suspense>
           <template #default>
