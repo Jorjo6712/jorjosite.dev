@@ -11,7 +11,7 @@
         <ul>
           <Suspense>
           <template #default>
-            <li class="flex flex-col w-full justify-center items-center gap-4">
+            <li v-auto-animate  class="flex flex-col w-full justify-center items-center gap-4">
               <div class="bg-gray-900 shadow shadow-black flex flex-col rounded-md p-3 lg:min-w-96 lg:max-w-96 min-[320px]:min-w-64 min-[320px]:max-w-96 min-[320px]:h-1/12 min-[320px]:w-11/12" v-for="comment in comments.value" :key="comment._id">
                   <h1 class="text-white text-base trext-wrap break-words">
                     {{ comment.author }}:
@@ -23,8 +23,14 @@
                     <h1 class="text-gray-600 text-sm">
                         Posted: {{ comment.timestamp }}
                     </h1>
-                    <button class="text-blue-500"> Reply </button>
+                    <button @click="toggleReplyForm(comment)" class="text-blue-500"> Reply </button>
                   </div>
+                  <ul v-if="comment.showReplyForm">
+                    <li>
+                      <textarea v-model="comment.replyText" placeholder="Write your reply here" class="bg-gray-900 shadow shadow-black text-white resize-none focus:outline-none rounded-lg p-2 mt-2"></textarea>
+                      <button @click="submitReply(comment)" class="text-white bg-green-600 shadow shadow-black rounded-2xl py-1.5 px-3 mt-0.5">Submit</button>
+                    </li>
+                  </ul>
               </div>
             </li>
         </template>
@@ -86,10 +92,34 @@
       const readyComment = () => (showButton.value = true)
 
       const unreadyComment = () => (showButton.value = false)
+
+      const addReply = (comment, reply) => {
+        comment.replies.push(reply)
+      }
+
+      const toggleReplyForm = (comment) => {
+        comment.showReplyForm = !comment.showReplyForm
+      }
+
+      const submitReply = async (comment) => {
+        try {
+          const reply = {
+            author: newComment.author,
+            message: comment.replyText,
+            timestamp: new Date().toLocaleString('en-GB', timeOptions),
+          }
+          await axios.post(`http://172.18.100.25:56041/comments/${comment._id}/replies`, reply)
+          addReply(comment, reply)
+          comment.replyText = ''
+          comment.showReplyForm = false
+        } catch (error) {
+          console.error('Error posting reply:', error)
+        }
+      }
   
       const getComments = async () => {
         try {
-          const response = await axios.get('http://172.18.100.254:56041/comments')
+          const response = await axios.get('http://172.18.100.25:56041/comments')
           comments.value = response.data.comments
         } catch (error) {
           console.error('Error fetching comments:', error)
@@ -98,7 +128,7 @@
   
       const postComment = async () => {
         try {
-          const postDetails = async () => { await axios.post('http://172.18.100.254:56041/comments', {
+          const postDetails = async () => { await axios.post('http://172.18.100.25:56041/comments', {
             author: newComment.author,
             message: newComment.message,
             timestamp: new Date().toLocaleString('en-GB', timeOptions),
@@ -120,9 +150,9 @@
         getComments
       )
   
-      setInterval(getComments, 5000)
+      setInterval(getComments, 30000)
   
-      return { comments, newComment, postComment, readyComment, unreadyComment, showButton}
+      return { comments, newComment, postComment, readyComment, unreadyComment, showButton, addReply, toggleReplyForm, submitReply }
     },
   }
   </script>

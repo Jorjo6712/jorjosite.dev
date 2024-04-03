@@ -25,7 +25,7 @@ import { ViFileTypeReactjs } from "oh-vue-icons/icons"
 
 
 /* Other Imports */
-
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 
 /* Component Imports */
 import App from './App.vue'
@@ -67,6 +67,7 @@ const app = createApp(App)
 
 app.component("v-icon", OhVueIcon)
 app.use(VueClickAway)
+app.use(autoAnimatePlugin)
 
 app.use(router)
 app.mount('#app')
